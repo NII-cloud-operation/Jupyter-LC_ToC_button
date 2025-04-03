@@ -1,0 +1,15 @@
+{
+  "jupyter.lab.toolbars": {
+    "Notebook": [
+      {
+        "name": "table_of_contents-table-of-contents",
+        "command": "table_of_contents:table-of-contents"
+      }
+    ]
+  },
+  "title": "table_of_contents",
+  "description": "table_of_contents settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
