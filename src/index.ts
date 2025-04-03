@@ -14,7 +14,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   activate: (app: JupyterFrontEnd) => {
     console.log('JupyterLab extension table_of_contents is activated!');
-    
+
     const { commands } = app;
     const command = 'table_of_contents:table-of-contents';
 
