@@ -1,7 +1,5 @@
 # table_of_contents
 
-[![Github Actions Status](https://github.com/miya-biz/Jupyter-table_of_contents/workflows/Build/badge.svg)](https://github.com/miya-biz/Jupyter-table_of_contents/actions/workflows/build.yml)
-
 A JupyterLab extension.
 
 ## Requirements
