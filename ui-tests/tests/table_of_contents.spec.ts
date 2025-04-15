@@ -25,12 +25,16 @@ test('should emit an activation console message', async ({ page }) => {
 test.use({ autoGoto: true });
 test('should work Table of Contents button', async ({ page }) => {
   // create new notebook
-  const fileName = "table_of_contents_test.ipynb";
+  const fileName = 'table_of_contents_test.ipynb';
   await page.notebook.createNew(fileName);
   await page.waitForSelector(`[role="main"] >> text=${fileName}`);
   // click Table of Contents button
-  await page.locator('[data-command="table_of_contents:table-of-contents"]').click();
+  await page
+    .locator('[data-command="table_of_contents:table-of-contents"]')
+    .click();
   // Table of Contents is visible
-  const tableOfContents = page.locator('#jp-left-stack').locator('.jp-TableOfContents');
+  const tableOfContents = page
+    .locator('#jp-left-stack')
+    .locator('.jp-TableOfContents');
   await expect(tableOfContents).toBeVisible();
 });
