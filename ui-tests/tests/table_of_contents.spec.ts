@@ -10,6 +10,19 @@ async function waitForLabApplication({ baseURL }, use) {
     await page.waitForSelector('#jupyterlab-splash', {
       state: 'detached'
     });
+    //! not wait for launcher tab.
+  };
+  await use(waitIsReady);
+}
+
+async function waitForLabApplicationAndLauncher({ baseURL }, use) {
+  const waitIsReady = async (
+    page: Page,
+    helpers: IJupyterLabPage
+  ): Promise<void> => {
+    await page.waitForSelector('#jupyterlab-splash', {
+      state: 'detached'
+    });
     await helpers.waitForCondition(() => {
       return helpers.activity.isTabActive('Launcher');
     });
@@ -81,7 +94,7 @@ treeTest(
 
 test.use({
   autoGoto: true,
-  waitForApplication: waitForLabApplication
+  waitForApplication: waitForLabApplicationAndLauncher
 });
 test('should work Table of Contents button on JupyterLab', async ({ page }) => {
   // create new notebook
