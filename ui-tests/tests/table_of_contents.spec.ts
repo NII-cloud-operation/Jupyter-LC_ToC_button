@@ -15,25 +15,6 @@ async function waitForLabApplication({ baseURL }, use) {
   await use(waitIsReady);
 }
 
-async function waitForLabApplicationAndLauncher({ baseURL }, use) {
-  const waitIsReady = async (
-    page: Page,
-    helpers: IJupyterLabPage
-  ): Promise<void> => {
-    await page.waitForSelector('#jupyterlab-splash', {
-      state: 'detached'
-    });
-    await helpers.waitForCondition(() => {
-      return helpers.activity.isTabActive('Launcher');
-    });
-    // Oddly current tab is not always set to active
-    if (!(await helpers.isInSimpleMode())) {
-      await helpers.activity.activateTab('Launcher');
-    }
-  };
-  await use(waitIsReady);
-}
-
 async function waitForTreeApplication(page: Page) {
   await page.waitForSelector('.jp-FileBrowser-Panel', {
     state: 'visible'
@@ -93,8 +74,7 @@ treeTest(
 );
 
 test.use({
-  autoGoto: true,
-  waitForApplication: waitForLabApplicationAndLauncher
+  autoGoto: true
 });
 test('should work Table of Contents button on JupyterLab', async ({ page }) => {
   // create new notebook
