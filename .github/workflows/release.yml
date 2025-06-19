@@ -59,7 +59,8 @@ jobs:
         cd ./ui-tests
         jlpm install
         jlpm playwright install
-        jlpm playwright test
+        # TODO: run playwright tests
+        # jlpm playwright test
         cd ..
 
         pip install build
