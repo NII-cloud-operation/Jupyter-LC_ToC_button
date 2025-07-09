@@ -14,6 +14,24 @@ async function waitForLabApplication({ baseURL }, use) {
   };
   await use(waitIsReady);
 }
+async function waitForLabApplitaionAndLauncher({ baseURL }, use) {
+  const waitIsReady = async (
+    page: Page,
+    helpers: IJupyterLabPage
+  ): Promise<void> => {
+    await page.waitForSelector('#jupyterlab-splash', {
+      state: 'detached'
+    });
+    await helpers.waitForCondition(() => {
+      return helpers.activity.isTabActive('Launcher');
+    });
+    // Oddly current tab is not always set to active
+    if (!(await helpers.isInSimpleMode())) {
+      await helpers.activity.activateTab('Launcher');
+    }
+  };
+  await use(waitIsReady);
+}
 
 async function waitForTreeApplication(page: Page) {
   await page.waitForSelector('.jp-FileBrowser-Panel', {
@@ -74,13 +92,19 @@ treeTest(
 );
 
 test.use({
-  autoGoto: true
+  autoGoto: true,
+  waitForApplication: waitForLabApplitaionAndLauncher
 });
 test('should work Table of Contents button on JupyterLab', async ({ page }) => {
   // create new notebook
   const fileName = 'table_of_contents_test1.ipynb';
   await page.notebook.createNew(fileName);
   await page.waitForSelector(`[role="main"] >> text=${fileName}`);
+  // Minimap button is not visible
+  const minimapButton = page.locator(
+    '[data-command="notebook:toggle-virtual-scrollbar"]'
+  );
+  await expect(minimapButton).toBeHidden();
   // click Table of Contents button
   const tocButton = page.locator(
     '[data-command="table_of_contents:table-of-contents"]'
@@ -105,6 +129,12 @@ treeTest(
       page.locator('li[data-command="notebook:create-new"]').click()
     ]);
     await waitForNotebookApplication(newPage);
+
+    // Minimap button is not visible
+    const minimapButton = newPage.locator(
+      '[data-command="notebook:toggle-virtual-scrollbar"]'
+    );
+    await expect(minimapButton).toBeHidden();
 
     // click Table of Contents button
     const tocButton = newPage.locator(
