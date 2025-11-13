@@ -4,6 +4,10 @@
       {
         "name": "table_of_contents-table-of-contents",
         "command": "table_of_contents:table-of-contents"
+      },
+      {
+        "name": "scrollbar",
+        "disabled": true
       }
     ]
   },
