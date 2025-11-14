@@ -1,6 +1,12 @@
 # table_of_contents
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NII-cloud-operation/Jupyter-LC_ToC_button/main?urlpath=tree)
+
 A JupyterLab extension.
+
+## Try it out on mybinder.org
+
+You can try out the extension on mybinder.org by clicking the Binder badge above.
 
 ## Requirements
 
@@ -11,7 +17,7 @@ A JupyterLab extension.
 To install the extension, execute:
 
 ```bash
-pip install table_of_contents
+pip install git+https://github.com/NII-cloud-operation/Jupyter-LC_ToC_button
 ```
 
 ## Uninstall
