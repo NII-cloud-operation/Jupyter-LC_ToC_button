@@ -2,7 +2,7 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NII-cloud-operation/Jupyter-LC_ToC_button/main?urlpath=tree)
 
-A JupyterLab extension.
+This extension brings back the Table of Contents button from [toc2](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/toc2/README.html) to JupyterLab and Jupyter Notebook 7.
 
 ## Try it out on mybinder.org
 
