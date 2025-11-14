@@ -1,6 +1,12 @@
 # table_of_contents
 
-A JupyterLab extension.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NII-cloud-operation/Jupyter-LC_ToC_button/main?urlpath=tree)
+
+This extension brings back the Table of Contents button from [toc2](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/toc2/README.html) to JupyterLab and Jupyter Notebook 7.
+
+## Try it out on mybinder.org
+
+You can try out the extension on mybinder.org by clicking the Binder badge above.
 
 ## Requirements
 
@@ -11,7 +17,7 @@ A JupyterLab extension.
 To install the extension, execute:
 
 ```bash
-pip install table_of_contents
+pip install git+https://github.com/NII-cloud-operation/Jupyter-LC_ToC_button
 ```
 
 ## Uninstall

@@ -1,11 +1,16 @@
-FROM quay.io/jupyter/scipy-notebook:lab-4.4.4
+FROM quay.io/jupyter/scipy-notebook:notebook-7.4.7
 
 USER root
 
-# instaill Node.js v20.x because Node.js is not installed with quay.io/jupyter/scipy-notebook
-RUN apt-get update && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-  && apt-get install -y nodejs \
-  && npm install -g yarn
+# Install Node.js 20.x
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && \
+    mkdir -p /.npm && \
+    chown jovyan:users -R /.npm && \
+    rm -rf /var/lib/apt/lists/*
+ENV NPM_CONFIG_PREFIX=/.npm
+ENV PATH=/.npm/bin/:${PATH}
 
 COPY . /tmp/table_of_contents
 RUN pip install --no-cache /tmp/table_of_contents
