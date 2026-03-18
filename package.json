@@ -7,9 +7,9 @@
         "jupyterlab",
         "jupyterlab-extension"
     ],
-    "homepage": "https://github.com/miya-biz/Jupyter-table_of_contents",
+    "homepage": "https://github.com/NII-cloud-operation/Jupyter-LC_ToC_button",
     "bugs": {
-        "url": "https://github.com/miya-biz/Jupyter-table_of_contents/issues"
+        "url": "https://github.com/NII-cloud-operation/Jupyter-LC_ToC_button/issues"
     },
     "license": "BSD-3-Clause",
     "author": {
@@ -27,7 +27,7 @@
     "style": "style/index.css",
     "repository": {
         "type": "git",
-        "url": "https://github.com/miya-biz/Jupyter-table_of_contents.git"
+        "url": "https://github.com/NII-cloud-operation/Jupyter-LC_ToC_button.git"
     },
     "scripts": {
         "build": "jlpm build:lib && jlpm build:labextension:dev",
